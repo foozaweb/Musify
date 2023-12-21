@@ -1,0 +1,3 @@
+Bug fixes
+
+- HotFix: Exclude offline audio data from user backup data
