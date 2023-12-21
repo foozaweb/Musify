@@ -173,14 +173,41 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget _buildErrorWidget(BuildContext context) {
-    return Center(
-      child: Text(
-        '${context.l10n!.error}!',
-        style: TextStyle(
-          color: colorScheme.primary,
-          fontSize: 18,
-        ),
+ Widget _buildErrorWidget2(BuildContext context) {
+    return SizedBox(
+      height: context.screenSize.height * 0.19,
+      width: context.screenSize.width,
+      child: ListView(
+        padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 18),
+        physics: const BouncingScrollPhysics(),
+        scrollDirection: Axis.horizontal,
+        shrinkWrap: true,
+        children: [
+          for (var i = 1; i < 9; i++)
+            AnimatedContainer(
+              duration: const Duration(milliseconds: 500),
+              decoration: BoxDecoration( 
+                borderRadius: BorderRadius.circular(6),
+                boxShadow: const [
+                  BoxShadow(
+                    color: Colors.black12,
+                    blurRadius: 3.0,
+                  ),
+                ],
+              ),
+              margin: const EdgeInsets.only(right: 10),
+              width: context.screenSize.height * 0.25,
+              height: context.screenSize.height * 0.15,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(6),
+                child: LinearProgressIndicator(
+                  backgroundColor: colorScheme.primary.withOpacity(0.5),
+                  valueColor: AlwaysStoppedAnimation<Color>(
+                      colorScheme.background.withOpacity(0.7)),
+                ),
+              ),
+            ),
+        ],
       ),
     );
   }
